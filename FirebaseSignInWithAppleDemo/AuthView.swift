@@ -6,10 +6,28 @@
 //
 
 import SwiftUI
+import FirebaseSignInWithApple
 
 struct AuthView: View {
+    
+//    @Environment(\.firebaseSignInWithApple) private var firebaseSignInWithApple
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack {
+            Spacer()
+            
+//            Button {
+//                firebaseSignInWithApple.authenticate()
+//            } label: {
+//                FirebaseSignInWithAppleLabel(.continueWithApple)
+//            }
+            
+            FirebaseSignInWithAppleButton {
+                FirebaseSignInWithAppleLabel(.continueWithApple)
+            }
+
+        }
+        .padding()
     }
 }
 
