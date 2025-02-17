@@ -1,5 +1,5 @@
 {
-  "originHash" : "f9210411ad10794ab1cb835ff60b43f0f729ccb95c4861158b4318fa6edfacfa",
+  "originHash" : "8e80ead62c32da59c50e4dc6b8366800e850145c1d5a51071e6968b8b3e2825f",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -33,8 +33,17 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/rebeloper/FirebaseSignInWithApple.git",
       "state" : {
-        "revision" : "95c796ea8ddd1173dff8aa594710cb81b16f952a",
-        "version" : "5.0.0"
+        "revision" : "3ff1fba64b339a01e156d289b295d16eb8881055",
+        "version" : "5.0.3"
+      }
+    },
+    {
+      "identity" : "firestorecollection",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/rebeloper/FirestoreCollection.git",
+      "state" : {
+        "revision" : "9ba21a567646f66059487066a158c5e1d441a667",
+        "version" : "1.0.9"
       }
     },
     {

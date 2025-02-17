@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C910E70F2D549121001D9BF7 /* FirebaseSignInWithApple in Frameworks */ = {isa = PBXBuildFile; productRef = C910E70E2D549121001D9BF7 /* FirebaseSignInWithApple */; };
+		C94777332D5DE68A009F950E /* FirestoreCollection in Frameworks */ = {isa = PBXBuildFile; productRef = C94777322D5DE68A009F950E /* FirestoreCollection */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C94777332D5DE68A009F950E /* FirestoreCollection in Frameworks */,
 				C910E70F2D549121001D9BF7 /* FirebaseSignInWithApple in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -71,6 +73,7 @@
 			name = FirebaseSignInWithAppleDemo;
 			packageProductDependencies = (
 				C910E70E2D549121001D9BF7 /* FirebaseSignInWithApple */,
+				C94777322D5DE68A009F950E /* FirestoreCollection */,
 			);
 			productName = FirebaseSignInWithAppleDemo;
 			productReference = C910E6F32D53EA48001D9BF7 /* FirebaseSignInWithAppleDemo.app */;
@@ -102,6 +105,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				C910E70D2D549121001D9BF7 /* XCRemoteSwiftPackageReference "FirebaseSignInWithApple" */,
+				C94777312D5DE68A009F950E /* XCRemoteSwiftPackageReference "FirestoreCollection" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = C910E6F42D53EA48001D9BF7 /* Products */;
@@ -345,6 +349,14 @@
 				minimumVersion = 5.0.0;
 			};
 		};
+		C94777312D5DE68A009F950E /* XCRemoteSwiftPackageReference "FirestoreCollection" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/rebeloper/FirestoreCollection.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -352,6 +364,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = C910E70D2D549121001D9BF7 /* XCRemoteSwiftPackageReference "FirebaseSignInWithApple" */;
 			productName = FirebaseSignInWithApple;
+		};
+		C94777322D5DE68A009F950E /* FirestoreCollection */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C94777312D5DE68A009F950E /* XCRemoteSwiftPackageReference "FirestoreCollection" */;
+			productName = FirestoreCollection;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

@@ -22,7 +22,7 @@ struct MainView: View {
             case .notAuthenticated:
                 AuthView()
             case .authenticated:
-                ContentView()
+                TabsView()
             }
         }
         .onChange(of: firebaseSignInWithApple.state) { oldValue, newValue in
