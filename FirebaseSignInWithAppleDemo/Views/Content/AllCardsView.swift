@@ -92,7 +92,7 @@ struct AllCardsView: View {
     func fetchAllCards() {
         Task {
             do {
-                // 1.
+                try await cardsCollection.fetchAll(predicates: [.orderBy("createdAt", true)])
             } catch {
                 print(error.localizedDescription)
             }
@@ -104,7 +104,7 @@ struct AllCardsView: View {
             do {
                 var updatedCard = card
                 updatedCard.title = "Card_\(Int.random(in: 1000...2000))"
-                // 2.
+                try await cardsCollection.update(with: updatedCard)
             } catch {
                 print(error.localizedDescription)
             }
@@ -114,7 +114,7 @@ struct AllCardsView: View {
     func deleteCard(_ card: Card) {
         Task {
             do {
-                // 3
+                try await cardsCollection.delete(card)
             } catch {
                 print(error.localizedDescription)
             }

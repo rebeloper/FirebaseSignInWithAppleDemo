@@ -9,17 +9,21 @@ import SwiftUI
 import FirebaseSignInWithApple
 import FirebaseAuth
 import FirebaseFirestore
-// 1.
+import FirestoreCollection
+
 
 struct ProfileView: View {
     
     @Environment(\.firebaseSignInWithApple) private var firebaseSignInWithApple
     
-    // 2.
+    @State private var profilesCollection = FirestoreCollection<Profile>(path: Path.Firestore.profiles)
     
     var body: some View {
         VStack {
-            // 3.
+            
+            if let profile = profilesCollection.queryDocument {
+                Text("\(profile.userId)")
+            }
             
             FirebaseSignOutWithAppleButton {
                 FirebaseSignInWithAppleLabel(.signOut)
@@ -49,7 +53,7 @@ struct ProfileView: View {
         Task {
             do {
                 guard let userId = Auth.auth().currentUser?.uid else { return }
-                // 4.
+                try await profilesCollection.fetch(id: userId)
             } catch {
                 print(error.localizedDescription)
             }
