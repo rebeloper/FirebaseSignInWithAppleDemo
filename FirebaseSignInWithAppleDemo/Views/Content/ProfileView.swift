@@ -53,7 +53,7 @@ struct ProfileView: View {
         Task {
             do {
                 guard let userId = Auth.auth().currentUser?.uid else { return }
-                try await profilesCollection.fetch(id: userId)
+                try await profilesCollection.fetch(.one(id: userId))
             } catch {
                 print(error.localizedDescription)
             }

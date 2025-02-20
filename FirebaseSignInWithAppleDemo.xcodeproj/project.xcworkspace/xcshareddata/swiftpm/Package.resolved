@@ -42,8 +42,8 @@
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/rebeloper/FirestoreCollection.git",
       "state" : {
-        "revision" : "9ba21a567646f66059487066a158c5e1d441a667",
-        "version" : "1.0.9"
+        "revision" : "c7ce141383adcef1870beef31c7987cb43288fc3",
+        "version" : "2.0.1"
       }
     },
     {

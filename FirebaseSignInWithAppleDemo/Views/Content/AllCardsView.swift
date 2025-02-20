@@ -27,7 +27,7 @@ struct AllCardsView: View {
                 }
             }
         }
-        .navigationTitle("All Cards")
+        .navigationTitle("All Cards (\(cardsCollection.count != nil ? "\(cardsCollection.count!)" : "N/A"))")
         .toolbar {
             ToolbarItem(placement: .primaryAction) {
                 Button {
@@ -39,6 +39,7 @@ struct AllCardsView: View {
         }
         .onAppear {
             fetchAllCards()
+            fetchCount()
         }
     }
     
@@ -80,19 +81,24 @@ struct AllCardsView: View {
     }
     
     func createCard() {
-        do {
-            let card = Card(title: "Card_\(Int.random(in: 1...1000))")
-            try cardsCollection.create(card)
-            fetchAllCards()
-        } catch {
-            print(error.localizedDescription)
+        Task {
+            do {
+                let card = Card(title: "Card_\(Int.random(in: 1...1000))")
+                try cardsCollection.create(card)
+                fetchAllCards()
+                try await Task.sleep(for: .seconds(1))
+                fetchCount()
+            } catch {
+                print(error.localizedDescription)
+            }
         }
     }
     
     func fetchAllCards() {
         Task {
             do {
-                try await cardsCollection.fetchAll(predicates: [.orderBy("createdAt", true)])
+//                try await cardsCollection.fetchAll(predicates: [.orderBy("createdAt", true)])
+                try await cardsCollection.fetch(.more(predicates: [.orderBy("createdAt", true)]))
             } catch {
                 print(error.localizedDescription)
             }
@@ -115,6 +121,17 @@ struct AllCardsView: View {
         Task {
             do {
                 try await cardsCollection.delete(card)
+                fetchCount()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func fetchCount() {
+        Task {
+            do {
+                try await cardsCollection.fetch(.count(predicates: []))
             } catch {
                 print(error.localizedDescription)
             }

@@ -354,7 +354,7 @@
 			repositoryURL = "https://github.com/rebeloper/FirestoreCollection.git";
 			requirement = {
 				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
+				minimumVersion = 2.0.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */

@@ -120,8 +120,9 @@ struct CardsView: View {
     func fetchFirstCards() {
         Task {
             do {
-                let fetchedCollectionState = try await cardsCollection.fetchFirst(3, orderBy: "createdAt")
-                print(fetchedCollectionState)
+//                let fetchedCollectionState = try await cardsCollection.fetchFirst(3, orderBy: "createdAt")
+//                print(fetchedCollectionState)
+                try await cardsCollection.fetch(.first(options: .init(limit: 3, orderBy: "createdAt"), predicates: []))
             } catch {
                 print(error.localizedDescription)
             }
@@ -131,8 +132,9 @@ struct CardsView: View {
     func fetchNextCards() {
         Task {
             do {
-                let fetchedCollectionState = try await cardsCollection.fetchNext(3, orderBy: "createdAt")
-                print(fetchedCollectionState)
+//                let fetchedCollectionState = try await cardsCollection.fetchNext(3, orderBy: "createdAt")
+//                print(fetchedCollectionState)
+                try await cardsCollection.fetch(.next(options: .init(limit: 3, orderBy: "createdAt"), predicates: []))
             } catch {
                 print(error.localizedDescription)
             }
