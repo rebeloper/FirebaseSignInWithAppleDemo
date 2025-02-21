@@ -23,6 +23,14 @@ struct ProfileView: View {
             
             if let profile = profilesCollection.queryDocument {
                 Text("\(profile.userId)")
+                Stepper {
+                    Text("Followers: \(profile.followersCount)")
+                } onIncrement: {
+                    incrementFollowersCount()
+                } onDecrement: {
+                    decrementFollowersCount()
+                }
+
             }
             
             FirebaseSignOutWithAppleButton {
@@ -59,6 +67,31 @@ struct ProfileView: View {
             }
         }
     }
+    
+    func incrementFollowersCount() {
+        Task {
+            do {
+                guard let userId = Auth.auth().currentUser?.uid else { return }
+                try await profilesCollection.increment("followersCount", forId: userId)
+                fetchProfile()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func decrementFollowersCount() {
+        Task {
+            do {
+                guard let userId = Auth.auth().currentUser?.uid else { return }
+                try await profilesCollection.decrement("followersCount", forId: userId)
+                fetchProfile()
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+    }
+
 }
 
 #Preview {

@@ -30,10 +30,12 @@ struct Profile: Firestorable {
     
     var title: String
     var name: Name
+    var followersCount: Int
     
-    init(title: String = "", name: Name = Name()) {
+    init(title: String = "", name: Name = Name(), followersCount: Int = 0) {
         self.title = title
         self.name = name
+        self.followersCount = followersCount
     }
     
     //MARK: - Codable implementation
@@ -45,6 +47,7 @@ struct Profile: Firestorable {
         case userId
         case title
         case name
+        case followersCount
     }
     
     init(from decoder: any Decoder) throws {
@@ -55,6 +58,7 @@ struct Profile: Firestorable {
         self.userId = try container.decodeIfPresent(String.self, forKey: .userId) ?? ""
         self.title = try container.decodeIfPresent(String.self, forKey: .title) ?? ""
         self.name = try container.decodeIfPresent(Name.self, forKey: .name) ?? Name()
+        self.followersCount = try container.decodeIfPresent(Int.self, forKey: .followersCount) ?? 0
     }
     
     func encode(to encoder: any Encoder) throws {
@@ -64,6 +68,7 @@ struct Profile: Firestorable {
         try container.encodeIfPresent(self.userId, forKey: .userId)
         try container.encodeIfPresent(self.title, forKey: .title)
         try container.encodeIfPresent(self.name, forKey: .name)
+        try container.encodeIfPresent(self.followersCount, forKey: .followersCount)
     }
 }
 
